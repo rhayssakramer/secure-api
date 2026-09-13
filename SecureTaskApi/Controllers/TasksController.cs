@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SecureTaskApi.Models;
+using SecureTaskApi.DTOs;
 
 namespace SecureTaskApi.Controllers;
 
@@ -19,6 +20,15 @@ public class TasksController : ControllerBase
             IsCompleted = false,
             CreatedAt = DateTime.UtcNow,
             UserId = 1
+        };
+
+        var response = new TaskResponse
+        {
+            Id = task.Id,
+            Title = task.Title,
+            Description = task.Description,
+            IsCompleted = task.IsCompleted,
+            CreateAdt = task.CreatedAt
         };
 
         return Ok(task);
